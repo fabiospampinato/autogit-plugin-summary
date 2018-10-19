@@ -153,6 +153,20 @@ function factory ( customOptions?: Partial<typeof defaultOptions> ) {
 
     }
 
+    /* STAGED */
+
+    if ( status.staged.length ) {
+
+      output.push ( `Staged (${status.staged.length}):` );
+
+      for ( let filePath of status.staged ) {
+
+        output.push ( `  ${filePath}` );
+
+      }
+
+    }
+
     /* OUTPUT */
 
     if ( !output.length ) return task.skip ( 'No changes' );
