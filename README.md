@@ -18,6 +18,7 @@ This plugin uses the following options object:
 
 ```js
 {
+  onlyStaged: true, // Only show changes regarding staged files
   diff: true, // Show the diff of modified files
   content: true // Show the content of new files
 }

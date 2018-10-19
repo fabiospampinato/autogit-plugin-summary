@@ -13,6 +13,7 @@ import getFilesStaged from './get_files_staged';
 /* SUMMARY */
 
 const defaultOptions = {
+  onlyStaged: true,
   diff: true,
   content: true
 };
@@ -28,15 +29,25 @@ function factory ( customOptions?: Partial<typeof defaultOptions> ) {
 
     /* VARIABLES */
 
-    const staged = await getFilesStaged ( git );
+    let staged;
 
-    await git.add ( '-A' );
+    if ( !options.onlyStaged ) {
+
+      staged =await getFilesStaged ( git );
+
+      await git.add ( '-A' );
+
+    }
 
     const status = await git.status (),
           diff = await git.diffSummary ([ 'HEAD' ]);
 
-    await git.reset ( 'mixed' );
-    await git.add ( staged );
+    if ( !options.onlyStaged ) {
+
+      await git.reset ( 'mixed' );
+      await git.add ( staged );
+
+    }
 
     /* TITLE */
 
