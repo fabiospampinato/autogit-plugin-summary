@@ -1,7 +1,7 @@
 {
   "name": "autogit-plugin-summary",
   "description": "A plugin for displaying a summary of all the changes in the working tree.",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
